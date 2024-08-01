@@ -21,6 +21,13 @@ git clone https://github.com/your-username/todo-api.git
 cd todo-api
 ```
 
+### Add env
+
+New .env file in root and add MONGODB_URL 
+```
+MONGODB_URL=YOUR_MONGO_DB_URL
+```
+
 ### Serve
 
 ```bash
