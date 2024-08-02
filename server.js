@@ -1,14 +1,19 @@
-// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const cors = require('cors');
 
 // 載入環境變數
 dotenv.config();
 
 const app = express();
 const port = 3000;
+
+// 使用 CORS 中介
+app.use(cors({
+  origin: ['http://localhost:5173']
+}));
 
 // Middlewares
 app.use(bodyParser.json());
