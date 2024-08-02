@@ -24,14 +24,24 @@ mongoose
   .then(() => console.log("MongoDB connected."))
   .catch((err) => console.log(err));
 
+// Define ToDo schema
+const todoSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  completed: { type: Boolean, required: true }
+});
+
+// Set the toJSON transform to change _id to id and remove __v
+todoSchema.set('toJSON', {
+  transform: (doc, ret) => {
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.__v;
+      return ret;
+  }
+});
+
 // Define ToDo model
-const Todo = mongoose.model(
-  "Todo",
-  new mongoose.Schema({
-    title: { type: String, required: true },
-    completed: { type: Boolean, required: true },
-  })
-);
+const Todo = mongoose.model('Todo', todoSchema);
 
 // Routes
 app.get("/todos", async (req, res) => {
