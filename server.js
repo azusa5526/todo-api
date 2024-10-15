@@ -13,7 +13,7 @@ const port = 3000;
 // 使用 CORS 中介
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "http://localhost:5174"],
   })
 );
 
